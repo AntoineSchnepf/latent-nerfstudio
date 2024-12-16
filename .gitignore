@@ -1,0 +1,9 @@
+**__pycache__**
+**.vscode**
+outputs
+wandb
+interactive_plots
+paper1_checkpoints
+visuals
+temp**
+visuals**
