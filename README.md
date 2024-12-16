@@ -1,7 +1,5 @@
 TODO:
-- liscence
 - test environement installation
-
 
 
 # Implementation of latent Nerfstudio extension
@@ -26,6 +24,14 @@ You can use Anaconda to create the environment:
 ```
 conda create --name latent-nerfstudio -y python=3.8.19
 conda activate latent-nerfstudio
+```
+
+Then install pytorch
+```
+pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
+
+conda install -c “nvidia/label/cuda-11.8.0” cuda-toolkit
+pip install ninja git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
 ```
 
 To install the remaining requirements, execute:
@@ -53,18 +59,22 @@ Note that our code only supports the [Nerfstudio dataparser](https://docs.nerf.s
 We visualize and evaluate our latent NeRFs using [wandb](https://wandb.ai/site). You can find a quickstart guide [here](https://docs.wandb.ai/quickstart).
 During its training, a latent NeRF can be visualized in the RGB space and latent space via the logged dashboard figure:
 
-![LatentNeRFTrainingPipeline](assets/lnerf_dashboard.png)
+![LatentNeRFTrainingPipeline](assets/metrics.svg)
 
 On this figure, the top row illustrates the channels of latent NeRF renderings (`Render c*`.) and the corresponding decoded image (`Render dec`).
 The bottom row illustrate the ground truth image (`GT`), and corresponding latent encoding (`GT enc c*`), which the latent NeRF aims at reproducing. Additionally, it displays the auto-encoded reconstruction of the GT (`AutoEnc`).
 
 Adittionaly to the above visual evaluation, we compute 3 types of metrics to quantitatively evaluate latent NeRF performances:
-- `metrics_e` compares the encoded image (`GT enc c*`) to the image rendered by the latent NeRF (`Render c*`). 
-- `metrics_d` compares the decoded rendering of the latent NeRF (`Render dec`) with the ground truth image (`GT`)
-- `metrics_ae` compared the ground truth image (`GT`) with its decoded-encoding (`AutoEnc`).
+- `metrics_e` is the error between the encoded image (`GT enc c*`) and the image rendered by the latent NeRF (`Render c*`). 
+- `metrics_d` is the error between the decoded rendering of the latent NeRF (`Render dec`) and the ground truth image (`GT`). It measures the quality of the latent NeRF in the RGB space. 
+- `metrics_ae` is the error between the ground truth image (`GT`) and its auto-encoded reconstruction (`AutoEnc`). It measures the performance of the auto-encoder. 
 
 Note that, as our scenes are learned in the latent space, the default Nerfstudio [viewer interface](https://docs.nerf.studio/quickstart/viewer_quickstart.html) is not supported in our code.
 
+## License
+This code is open-source. It is shared under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0).
+It modifes the code of Nerfstudio which is also licensed under the [Apache 2.0 License](https://www.apache.org/licenses/LICENSE-2.0) to support training in the latent space.
+Major changes are annotated with the comment ``changes related to latent_nerfstudio``.
 
 ## Citation
 
