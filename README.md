@@ -1,13 +1,9 @@
-TODO:
-- test environement installation
+# Latent Nerfstudio extension
 
-
-# Implementation of latent Nerfstudio extension
-
-> Antoine Schnepf*, Karim Kassab*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport, Valérie Gouet-Brunet (* indicates equal contribution)<br>
+> Antoine Schnepf*, Karim Kassab*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport, Valérie Gouet-Brunet (* equal contributions)<br>
 | [Project Page](https://ig-ae.github.io) | [Full Paper](https://arxiv.org/abs/2410.22936) |<br>
 
-This repo modifies [Nerfstudio](https://github.com/nerfstudio-project/nerfstudio) to support training NeRFs in a VAE latent space.
+This repo modifies [Nerfstudio](https://github.com/nerfstudio-project/nerfstudio) to support training NeRFs in a AE latent space.
 We use it to train latent NeRF architectures in our paper **Bringing NeRFs to the Latent Space: Inverse Graphics Autoencoder**.
 
 ![LatentNeRFTrainingPipeline](assets/latent_nerf_training_pipeline.svg)
@@ -26,12 +22,14 @@ conda create --name latent-nerfstudio -y python=3.8.19
 conda activate latent-nerfstudio
 ```
 
-Then install pytorch
+Then install pytorch, tinycudann, and other dependencies:
 ```
 pip install torch==2.1.2+cu118 torchvision==0.16.2+cu118 --extra-index-url https://download.pytorch.org/whl/cu118
-
-conda install -c “nvidia/label/cuda-11.8.0” cuda-toolkit
+ 
+conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
 pip install ninja git+https://github.com/NVlabs/tiny-cuda-nn/#subdirectory=bindings/torch
+
+pip install git+https://github.com/KAIR-BAIR/nerfacc.git
 ```
 
 To install the remaining requirements, execute:
@@ -65,9 +63,9 @@ On this figure, the top row illustrates the channels of latent NeRF renderings (
 The bottom row illustrate the ground truth image (`GT`), and corresponding latent encoding (`GT enc c*`), which the latent NeRF aims at reproducing. Additionally, it displays the auto-encoded reconstruction of the GT (`AutoEnc`).
 
 Adittionaly to the above visual evaluation, we compute 3 types of metrics to quantitatively evaluate latent NeRF performances:
-- `metrics_e` is the error between the encoded image (`GT enc c*`) and the image rendered by the latent NeRF (`Render c*`). 
-- `metrics_d` is the error between the decoded rendering of the latent NeRF (`Render dec`) and the ground truth image (`GT`). It measures the quality of the latent NeRF in the RGB space. 
-- `metrics_ae` is the error between the ground truth image (`GT`) and its auto-encoded reconstruction (`AutoEnc`). It measures the performance of the auto-encoder. 
+- `metrics_e` are metrics between the encoded image (`GT enc c*`) and the image rendered by the latent NeRF (`Render c*`). 
+- `metrics_d` are metrics between the decoded rendering of the latent NeRF (`Render dec`) and the ground truth image (`GT`). It measures the quality of the latent NeRF in the RGB space. 
+- `metrics_ae` are metrics between the ground truth image (`GT`) and its auto-encoded reconstruction (`AutoEnc`). It measures the performance of the auto-encoder. 
 
 Note that, as our scenes are learned in the latent space, the default Nerfstudio [viewer interface](https://docs.nerf.studio/quickstart/viewer_quickstart.html) is not supported in our code.
 
