@@ -16,6 +16,7 @@ Our code has been tested on:
 - CUDA 11.8
 - `L4` and `A100` NVIDIA GPUs
 
+#### With Anaconda
 You can use Anaconda to create the environment:
 ```
 conda create --name latent-nerfstudio -y python=3.8.19
@@ -36,6 +37,13 @@ To install the remaining requirements, execute:
 ```
 pip install -r requirements.txt
 ```
+#### With docker
+
+- Edit your cuda architecture in the Dockerfile "ARG CUDA_ARCHITECTURES=XX" where XX is the architecture number (more details are available in the [nerfstudio documentation](https://docs.nerf.studio/quickstart/installation.html))
+- Build the image :
+```
+docker build --tag dockerfile_latent-nerf -f docker/Dockerfile .
+```
 
 ### Usage
 Our implementation adopts the same standards as Nerfstudio and utilizes [Tyro](https://github.com/brentyi/tyro) for configuration management.
@@ -50,7 +58,15 @@ where
 - method_name $\in$ {nerfacto, vanilla-nerf, tensorf, kplanes, instant-ngp},
 - vae_name $\in$ {ostris, stable-diffusion}.
 
+The `--checkpoint` argument for the VAE is optional.
+
 Note that our code only supports the [Nerfstudio dataparser](https://docs.nerf.studio/reference/api/data/dataparsers.html#nerfstudio), and hence the data has to be formatted accordingly.
+
+#### With docker
+
+```
+docker run --gpus all -u 0 -v <path_to_scene_data>:<path_to_scene_data> --rm -it --shm-size=12gb dockerfile_latent-nerf python train.py <your_python_command>
+```
 
 
 ## Evaluation
