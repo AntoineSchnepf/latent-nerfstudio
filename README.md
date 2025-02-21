@@ -1,7 +1,7 @@
 # Latent Nerfstudio Extension
 
 > Antoine Schnepf*, Karim Kassab*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport, Valérie Gouet-Brunet (* equal contributions)<br>
-| [Project Page](https://ig-ae.github.io) | [Full Paper](https://arxiv.org/abs/2410.22936) |<br>
+| [Project Page](https://ig-ae.github.io) | [Full paper](https://openreview.net/forum?id=LTDtjrv02Y) | [Preprint](https://arxiv.org/abs/2410.22936) |<br>
 
 This repo modifies [Nerfstudio](https://github.com/nerfstudio-project/nerfstudio) to support training NeRFs in a AE latent space.
 We use it to train latent NeRF architectures in our paper **Bringing NeRFs to the Latent Space: Inverse Graphics Autoencoder**.
@@ -96,7 +96,7 @@ If you find this research project useful, please consider citing our work:
 ```
 @inproceedings{
     ig-ae,
-    title={Bringing Ne{RF}s to the Latent Space: Inverse Graphics Autoencoder},
+    title={{Bringing NeRFs to the Latent Space: Inverse Graphics Autoencoder}},
     author={Antoine Schnepf and Karim Kassab and Jean-Yves Franceschi and Laurent Caraffa and Flavian Vasile and Jeremie Mary and Andrew I. Comport and Valerie Gouet-Brunet},
     booktitle={The Thirteenth International Conference on Learning Representations},
     year={2025},

@@ -12,6 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# This file is a modified version of nerfstudio/configs/method_configs.py
+# Modifications done by Antoine Schnepf and Karim Kassab
+
 """
 Put all the method implementations in one location.
 """
