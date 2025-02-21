@@ -1,4 +1,4 @@
-# Latent Nerfstudio extension
+# Latent Nerfstudio Extension
 
 > Antoine Schnepf*, Karim Kassab*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport, Valérie Gouet-Brunet (* equal contributions)<br>
 | [Project Page](https://ig-ae.github.io) | [Full Paper](https://arxiv.org/abs/2410.22936) |<br>
