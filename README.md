@@ -1,6 +1,6 @@
 # Latent Nerfstudio Extension
 
-> Antoine Schnepf*, Karim Kassab*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport $^\dagger$, Valérie Gouet-Brunet $^\dagger$ (*$^\dagger$ indicate equal contribution)<br>
+> Antoine Schnepf*, Karim Kassab*, Jean-Yves Franceschi, Laurent Caraffa, Flavian Vasile, Jeremie Mary, Andrew Comport $^\dagger$, Valérie Gouet-Brunet $^\dagger$ (* $^\dagger$ indicate equal contribution)<br>
 | [Project Page](https://ig-ae.github.io) | [Full paper](https://openreview.net/forum?id=LTDtjrv02Y) | [Preprint](https://arxiv.org/abs/2410.22936) |<br>
 
 This repo modifies [Nerfstudio](https://github.com/nerfstudio-project/nerfstudio) to support training NeRFs in a AE latent space.
